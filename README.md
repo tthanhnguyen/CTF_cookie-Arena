@@ -1,8 +1,7 @@
 # CTF_cookie-Arena
 Challenges CTF cookie arena with me
 
-## CTF_cookie-Arena
-##1 Baby Crawler
+## 1 Baby Crawler
 
 Writeup đầu tiên trong CTF_cookie-Arena này là challenge Baby Crawler với mình thì bài này không quá khó nhưng cũng làm tốn kha khá thời gian của mình và bắt đầu nào :>>
 truy cập vào đường dẫn thử thách ta có giao diện chính của web như hình:
@@ -25,8 +24,7 @@ Nhận thấy curl được nối chuỗi với phần escapeshellcmd($url) mìn
 ![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/f7f80235-6165-4d2b-911d-8740724ab665) và ngay lập tức webhook mình nhận được gói tin
 ![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/5c815677-e450-42f5-89b2-a6818746e1e0) lúc này mình chỉ cần download file chứa flag là xong
 
-
-##2 Baby File Inclusion
+## 2 Baby File Inclusion
 
 bài thứ 2 trong CTF_cookie-Arena này là challenge Baby File Inclusion chỉ cần nhìn tên cũng đoán được thử này có lỗ hổng file inclusion đây là 1 trong nhưng lỗ hổng đầu tiên mà mình học bắt đầu nào !!!!
 Yêu cầu của thử thách này là làm sao tạo ra được webshell để đọc được file flagxxx.txt trong hệ thống và đây là giao diện của lab gồm button cho mình tìm và tải file từ máy lên và 1 button để upload nó lên 
