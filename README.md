@@ -4,9 +4,7 @@ Challenges CTF cookie arena with me
 ## 1 Baby Crawler
 
 Writeup đầu tiên trong CTF_cookie-Arena này là challenge Baby Crawler với mình thì bài này không quá khó nhưng cũng làm tốn kha khá thời gian của mình và bắt đầu nào :>>
-truy cập vào đường dẫn thử thách ta có giao diện chính của web như hình:
-![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/d3d6f79f-c20e-45de-8dba-c1e09b40ad04)
-với nút CRAWL và 1 đường link đến https://vnexpress.net/viet-nam-xuat-khau-sang-my-latinh-mot-ty-usd-moi-thang-4541275.html khi bấm nút CRAWL web sẽ hiển thị 1 đường dẫn Cached File:
+truy cập vào đường dẫn thử thách ta có giao diện chính của web với nút CRAWL và 1 đường link đến https://vnexpress.net/viet-nam-xuat-khau-sang-my-latinh-mot-ty-usd-moi-thang-4541275.html khi bấm nút CRAWL web sẽ hiển thị 1 đường dẫn Cached File: như hình sau:
 ![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/30ae0633-365c-4d7a-84cf-a44bf2f39971)
 truy cập vào thì nó sẽ dẫn ta đến trang chưa nội dung của bài báo. Sau khi tìm hiểu chức năng cũng như cách hoạt động của web mình thử view-source xem có kiếm được source code hoặc đường dẫn ẩn nào không thì đập vào mắt mình là /?debug
 ![Screenshot 2024-06-12 000915](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/2764819a-475b-4c8e-9deb-520bf6969fcb) 
@@ -56,8 +54,25 @@ Vậy là thành công rồi việc bây giờ là đổi shell để đọc đ�
 
 ## 3 Simple Blind SQL Injection
 
+Đến với bài 3 với yêu cầu là login account: admin ở /login để lấy flag và được biết password chỉ chứa các kí tự [a-z0-9_] truy cập vào lab tao có 1 trang sau 
+![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/eca518e5-11a8-47bb-82b4-1d545455c2e9)
+
+như hình thì ta có 1 vị trí để nhập và kiễm tra UID có tồn tại hay không nếu có thì sẽ thông báo "User uid exixsts" nếu không "User uid not Found!" mình thử nhập UID với admin và adminn
+![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/12f12632-e06a-4bd0-9f63-86a8d82fda37)
+![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/86274607-dba5-4feb-8205-c0b462ffa58b)
 
 
+sau khi hiểu chức năng của uid mình thử " và ' xem có error xảy ra không thì với dấu nháy kép (") không xảy ra gì nhưng nháy đơn (') web hiện lên error. Trong error ta biết web sử đụng sqlite3 và chú ý đến dòng nrows = 1 if query_db("SELECT * FROM users WHERE uid ='%s'" % uid, one=True) else 0 ở đây t biết query lấy trực tiếp biện uid để chèn trực tiếp vào query sql và chắc chắn nó bị sql injection kết hợp với dữ kiện web chỉ trả về "User uid exixsts" nếu không "User uid not Found!" nên mình biết đây là boolean SQL Injection
+
+![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/6a991447-a3fc-4703-9031-63533e0bb238)
+
+Sau khi xác định là boolean SQL Injection bây giờ mình sẽ tiến hành thực hiện khai thác nó với các bước sau:
+  - Đầu tiên mình cần xác định table nơi chứa account và password của admin nhưng từ truy vấn "SELECT * FROM users WHERE uid ='%s'" mình có thể xác định luôn table tên users và 1 column tên uid
+  - Thứ hai minh cần xác định số column trong table users ở đây mình viết ra 1 query hoàn chỉnh sau: SELECT * FROM users WHERE uid = 'admin' AND ((SELECT COUNT(*) FROM pragma_table_info('users')) > 2) -- rồi lấy admin' AND ((SELECT COUNT(*) FROM pragma_table_info('users')) > 2) -- để chèn vào phần uid ở đây mình bắt đầu thử từ 2 và tăng lên từ từ vì biết chắc nó có ít nhất 2 column 1 cái là uid chứa account sau khi thử với 3 thì kết quả trả not found => table 'users' này có 3 column
+![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/98e725d3-ddd0-4dc1-ba20-0db0ebb60f1f)
+  - Thứ ba xác định số kí tự trong tên column với query sau: SELECT * FROM users WHERE uid = 'admin' AND ((SELECT LENGTH(name) FROM pragma_table_info('users') LIMIT 1 OFFSET 0) > 1) -- tương tự như bước 2 và lặp lại nhưng thay OFFSET bằng 1 để bỏ qua column đầu tiên mới check => tìm ra số kí tự của cả 2 column là 3 kí tự (trong đó 1 column là uid )
+  - thứ tư tìm tên column chứa password với query sau : SELECT * FROM users WHERE uid = 'admin' AND (SELECT (SUBSTR((SELECT name FROM pragma_table_info('users') LIMIT 1 OFFSET 1), 1, 1) = 'a') = 1 )-- vì số kí trong tên column là 3 nên mình chỉ cần brute force kí tự thôi có thể dùng intruder trong burp-suite nhưng mình sẽ viết script python để thực hiện nhanh hơn
+ 
 
 
 
