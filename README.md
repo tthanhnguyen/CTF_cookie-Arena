@@ -26,7 +26,7 @@ Nhận thấy curl được nối chuỗi với phần escapeshellcmd($url) mìn
 
 ## 2 Baby File Inclusion
 
-bài thứ 2 trong CTF_cookie-Arena này là challenge Baby File Inclusion chỉ cần nhìn tên cũng đoán được thử này có lỗ hổng file inclusion đây là 1 trong nhưng lỗ hổng đầu tiên mà mình học bắt đầu nào !!!!
+bài thứ 2 trong CTF_cookie-Arena này là challenge Baby File Inclusion
 Yêu cầu của thử thách này là làm sao tạo ra được webshell để đọc được file flagxxx.txt trong hệ thống và đây là giao diện của lab gồm button cho mình tìm và tải file từ máy lên và 1 button để upload nó lên 
 ![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/1960da91-d9cf-4b65-8f9a-2ba2b014c243)
 mình thử uploads 1 file hình ảnh lên thì mình có được 1 đường dẫn là uploads/download.jpg để xem hình ảnh
@@ -54,6 +54,7 @@ Vậy là thành công rồi việc bây giờ là đổi shell để đọc đ�
 ![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/dc223cf1-c094-41d3-84ab-222f55609eec)
 
 
+## 3 Simple Blind SQL Injection
 
 
 
