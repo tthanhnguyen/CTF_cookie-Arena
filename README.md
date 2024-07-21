@@ -1,7 +1,11 @@
 # CTF_cookie-Arena
-Challenges CTF cookie arena with me
+## Challenges CTF cookie arena with me
 
-## 1 Baby Crawler
+## Mục lục
+- [Baby Crawler](#baby-crawler)
+- [Baby File Inclusion](#baby-file-inclusion)
+
+* ### 1 Baby Crawler
 
 Writeup đầu tiên trong CTF_cookie-Arena này là challenge Baby Crawler với mình thì bài này không quá khó nhưng cũng làm tốn kha khá thời gian của mình và bắt đầu nào :>>
 truy cập vào đường dẫn thử thách ta có giao diện chính của web với nút CRAWL và 1 đường link đến https://vnexpress.net/viet-nam-xuat-khau-sang-my-latinh-mot-ty-usd-moi-thang-4541275.html khi bấm nút CRAWL web sẽ hiển thị 1 đường dẫn Cached File: như hình sau:
@@ -22,7 +26,7 @@ Nhận thấy curl được nối chuỗi với phần escapeshellcmd($url) mìn
 ![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/f7f80235-6165-4d2b-911d-8740724ab665) và ngay lập tức webhook mình nhận được gói tin
 ![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/5c815677-e450-42f5-89b2-a6818746e1e0) lúc này mình chỉ cần download file chứa flag là xong
 
-## 2 Baby File Inclusion
+* ### 2 Baby File Inclusion
 
 bài thứ 2 trong CTF_cookie-Arena này là challenge Baby File Inclusion
 Yêu cầu của thử thách này là làm sao tạo ra được webshell để đọc được file flagxxx.txt trong hệ thống và đây là giao diện của lab gồm button cho mình tìm và tải file từ máy lên và 1 button để upload nó lên 
@@ -52,7 +56,7 @@ Vậy là thành công rồi việc bây giờ là đổi shell để đọc đ�
 ![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/dc223cf1-c094-41d3-84ab-222f55609eec)
 
 
-## 3 Simple Blind SQL Injection
+* ### 3 Simple Blind SQL Injection
 
 Đến với bài 3 với yêu cầu là login account: admin ở /login để lấy flag và được biết password chỉ chứa các kí tự [a-z0-9_] truy cập vào lab tao có 1 trang sau 
 ![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/eca518e5-11a8-47bb-82b4-1d545455c2e9)
