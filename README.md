@@ -3,7 +3,8 @@
 
 ## Mục lục
 - [Baby Crawler](#1-Baby-Crawler)
-- [Baby File Inclusion](#baby-file-inclusion)
+- [Baby File Inclusion](#2-Baby-File-Inclusion)
+- [Simple Blind SQL Injection](#3-Simple-Blind-SQL-Injection)
 
 ## 1 Baby Crawler
 
