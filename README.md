@@ -13,7 +13,7 @@ truy cập vào đường dẫn thử thách ta có giao diện chính của web
 ![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/30ae0633-365c-4d7a-84cf-a44bf2f39971)
 truy cập vào thì nó sẽ dẫn ta đến trang chưa nội dung của bài báo. Sau khi tìm hiểu chức năng cũng như cách hoạt động của web mình thử view-source xem có kiếm được source code hoặc đường dẫn ẩn nào không thì đập vào mắt mình là /?debug
 ![Screenshot 2024-06-12 000915](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/2764819a-475b-4c8e-9deb-520bf6969fcb) 
-sau khi truy cập ?debug thì mình đã có được source của bài này (phần source mình có để ở Baby Crawler các bạn có thể xem)
+sau khi truy cập ?debug thì mình đã có được source của bài này
 
 Sau khi đọc source code thì mình đã chú ý đến đoạn sau
 
