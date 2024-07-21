@@ -2,10 +2,10 @@
 ## Challenges CTF cookie arena with me
 
 ## Mục lục
-- [Baby Crawler](#baby-crawler)
+- [Baby Crawler](#1-Baby-Crawler)
 - [Baby File Inclusion](#baby-file-inclusion)
 
-* ### 1 Baby Crawler
+## 1 Baby Crawler
 
 Writeup đầu tiên trong CTF_cookie-Arena này là challenge Baby Crawler với mình thì bài này không quá khó nhưng cũng làm tốn kha khá thời gian của mình và bắt đầu nào :>>
 truy cập vào đường dẫn thử thách ta có giao diện chính của web với nút CRAWL và 1 đường link đến https://vnexpress.net/viet-nam-xuat-khau-sang-my-latinh-mot-ty-usd-moi-thang-4541275.html khi bấm nút CRAWL web sẽ hiển thị 1 đường dẫn Cached File: như hình sau:
