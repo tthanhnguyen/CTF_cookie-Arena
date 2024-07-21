@@ -94,7 +94,7 @@ Với phần source mình thấy được ta có thể lợi dụng level để 
 
 Vì trong blacklist ta dã bị chặn space hay blackspace rôi kể cả dùng ascii nên ta cần dùng 1 loại khác để bypass viết tiếp query thì có 1 cách khá phổ biến là dùng comment /**/ để thay thế . Trong blacklist cũng đã chặn luôn admin nhưng yêu bài là phải làm sảo để uid = 'admin' . Sau ít phút tìm kiếm thì mình tìm ra cách thay thế admin bằng việc nối chuỗi kí tự như sau: char(97)||char(100)||char(109)||char(105)||char(110)
 ![image](https://github.com/user-attachments/assets/4ff1f0f9-a501-4bc3-9233-70d4d047bf03) 
-Cuối cùng là làm sao để có thể thực hiện nối nó vì đã bị filter select rồi bí đường mình tìm trên gg nhưng không có cách nào được sau đó mình lên trang chủ của sqlite để tìm thông tin về SELECT thì mình thấy được Values có thể được dùng để tạo ra một bảng tạm thời 
+Cuối cùng là làm sao để có thể thực hiện nối nó vì đã bị filter select rồi bí đường mình tìm trên gg nhưng không có cách nào được sau đó mình lên trang chủ của sqlite để tìm thông tin về SELECT link: (https://www.sqlite.org/lang_select.html) thì mình thấy được Values có thể được dùng để tạo ra một bảng tạm thời 
 ![image](https://github.com/user-attachments/assets/7b67f095-b454-4c3f-8953-9b705239d064) ![image](https://github.com/user-attachments/assets/d78305af-4cba-4fcf-ae09-e79a1d8130bb)
 
 Kết hợp tất cả các dữ kiện mình có được payload sau : uid=123&upw=123&level=1/**/union/**/Values(char(97)||char(100)||char(109)||char(105)||char(110)) và send thì ta sẽ có flag
