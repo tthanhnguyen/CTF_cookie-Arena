@@ -5,6 +5,7 @@
 - [Baby Crawler](#1-Baby-Crawler)
 - [Baby File Inclusion](#2-Baby-File-Inclusion)
 - [Simple Blind SQL Injection](#3-Simple-Blind-SQL-Injection)
+- [Baby SQLite With Filter](#4-Baby-SQLite-With-Filter)
 
 * ### 1 Baby Crawler
 
@@ -81,6 +82,23 @@ Sau khi xác định là boolean SQL Injection bây giờ mình sẽ tiến hàn
   - bước năm thực hiện brute-force truy vấn mật khẩu của admin thôi nhưng trước hết thì cứ viết query trước đã : SELECT * FROM users WHERE uid = 'admin' AND (SELECT (SUBSTR((SELECT upw FROM users WHERE uid = 'admin'),1,1) = 'a') = 1 ) -- bây giờ giống như bước bốn mình sẽ sửa lại script đã viết trước đó (phần script sửa tên brute-foce_password.py) chạy script thì ra liền password nha login là có flag
 ![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/7418e55e-e36c-450b-ad22-6204e06085db)
 
+* ### 4 Baby SQLite With Filter
+Tiếp tục đến với 1 dạng của sql injection với Sqlite . Bắt đầu truy cập lab thì ta có 1 trang web cho phép người dùng login thế này
+![image](https://github.com/user-attachments/assets/6c7e9725-b1fa-4756-b3be-4ba924d0d4f9)
+
+Khi nhập đại cả username và password là 123 thì nhận lại thông điệp good! nhưng nếu trong username và password có xuất hiện các blacklist '[', ']', ',', 'admin', 'select', ''', '"', '\t', '\n', '\r', '\x08', '\x09', '\x00', '\x0b', '\x0d', ' '. thì sẽ bị trả về No Hack! . Vì bài này ta được cấp source code nên hãy thử đọc source để xem có thêm manh mối gì không nhé. Phân tích sơ source code ta có thể thấy web cho phép nhận 3 giá trị input là uid,upw và level trong đó level được gán mặc định là 9 sau đó là 1 hàm so sánh chuối uid,upw,level có xuất hiện các kí tự trong blacklist không nếu có thì trả về no hack! nếu không thì thực hiện truy vấn sql nếu uid = 'admin' thì chúng ta sẽ có flag
+![image](https://github.com/user-attachments/assets/ca87ffe9-3135-4d57-8884-465367c4e4f7)
+
+Với phần source mình thấy được ta có thể lợi dụng level để thực hiện injection do nó nhận giá trị không bọc nháy kép '' nhưng web chỉ cho ta nhập uid và upw thôi đâu có cho nhập level đâu (đơn giản là dùng burp rồi mở rộng thêm &level= thôi)
+![image](https://github.com/user-attachments/assets/1c1c0536-1ba9-4444-8fc1-2457258cdd57)
+
+Vì trong blacklist ta dã bị chặn space hay blackspace rôi kể cả dùng ascii nên ta cần dùng 1 loại khác để bypass viết tiếp query thì có 1 cách khá phổ biến là dùng comment /**/ để thay thế . Trong blacklist cũng đã chặn luôn admin nhưng yêu bài là phải làm sảo để uid = 'admin' . Sau ít phút tìm kiếm thì mình tìm ra cách thay thế admin bằng việc nối chuỗi kí tự như sau: char(97)||char(100)||char(109)||char(105)||char(110)
+![image](https://github.com/user-attachments/assets/4ff1f0f9-a501-4bc3-9233-70d4d047bf03) 
+Cuối cùng là làm sao để có thể thực hiện nối nó vì đã bị filter select rồi bí đường mình tìm trên gg nhưng không có cách nào được sau đó mình lên trang chủ của sqlite để tìm thông tin về SELECT thì mình thấy được Values có thể được dùng để tạo ra một bảng tạm thời 
+![image](https://github.com/user-attachments/assets/7b67f095-b454-4c3f-8953-9b705239d064) ![image](https://github.com/user-attachments/assets/d78305af-4cba-4fcf-ae09-e79a1d8130bb)
+
+Kết hợp tất cả các dữ kiện mình có được payload sau : uid=123&upw=123&level=1/**/union/**/Values(char(97)||char(100)||char(109)||char(105)||char(110)) và send thì ta sẽ có flag
+![image](https://github.com/user-attachments/assets/18508ff9-f725-4440-87f0-6980a12778d4)
 
 
 
