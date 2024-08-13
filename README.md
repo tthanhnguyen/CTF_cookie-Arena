@@ -114,7 +114,7 @@ Truy cập vào lab ta sẽ được 1 trang login và source code được hi�
 ![image](https://github.com/user-attachments/assets/25f91b3e-3675-4657-afa1-ca1722e96f56)
 
 Đọc code ta thấy chương trình dùng database là PostgreSQL và thực hiện lấy username và passowrd được nhập sau đó thực hiện truy vấn sql nếu truy vấn có rows > 0 thì sẽ trả về welcome, $username ta nhập ngược lại nếu không có rows nào thì trả về Invalid username or password!. Lỗi sqli xảy ra do dòng 13,14  $sql = "SELECT * FROM users WHERE username='$username' AND password= '$password'"; và $result = pg_query($conn, $sql) or die(pg_last_error()); câu sql lấy trực tiếp username và password từ người dùng vào câu truy vấn sql
-thế nhưng do chương trình chỉ trả về welcome, $username hoặc Invalid username or password! nên ta cần khai thác kiểu Blind SQLi.
+thế nhưng do chương trình chỉ trả về welcome, $username hoặc Invalid username or password! nên ta cần khai thác bằng Blind SQLi.
 
 Ta thường thấy PostgreSQL cho phép sử dụng Stacked Query trong PHP để thực hiện liên tiếp các câu lệnh SQL khác nhau trên cùng một dòng để nên mình thử payload sau **"test';SELECT+pg_sleep(10)--"** vào trường username để xem chương trình cho phép Stacked Query hay không và kết quả cho thấy ta có thể thực hiện stacked query
 ![image](https://github.com/user-attachments/assets/72283cf0-178c-4729-9b91-10ac159c174f)
