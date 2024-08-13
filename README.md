@@ -11,6 +11,7 @@
 * ### 1 Baby Crawler
 
 Writeup đầu tiên trong CTF_cookie-Arena này là challenge Baby Crawler với mình thì bài này không quá khó nhưng cũng làm tốn kha khá thời gian của mình và bắt đầu nào :>>
+
 truy cập vào đường dẫn thử thách ta có giao diện chính của web với nút CRAWL và 1 đường link đến https://vnexpress.net/viet-nam-xuat-khau-sang-my-latinh-mot-ty-usd-moi-thang-4541275.html khi bấm nút CRAWL web sẽ hiển thị 1 đường dẫn Cached File: như hình sau:
 ![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/30ae0633-365c-4d7a-84cf-a44bf2f39971)
 truy cập vào thì nó sẽ dẫn ta đến trang chưa nội dung của bài báo. Sau khi tìm hiểu chức năng cũng như cách hoạt động của web mình thử view-source xem có kiếm được source code hoặc đường dẫn ẩn nào không thì đập vào mắt mình là /?debug
