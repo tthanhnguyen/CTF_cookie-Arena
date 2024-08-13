@@ -134,4 +134,7 @@ chạy script mình sẽ tìm ra được file chứa flag là "flagqInZr.txt" s
 
 ![image](https://github.com/user-attachments/assets/a0b66110-1249-4997-ad39-77b0d41782e0)
 
+![image](https://github.com/user-attachments/assets/a8e3068c-a5dd-42b0-9d45-94103223d182)
+
+
 **FLAG : CHH{5QLI_rCe_U5iN6_St4cK_Qu3RY_78647d29c57d883d837c9c925519b417}**
