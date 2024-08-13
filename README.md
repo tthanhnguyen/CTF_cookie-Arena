@@ -6,7 +6,8 @@
 - [Baby File Inclusion](#2-Baby-File-Inclusion)
 - [Simple Blind SQL Injection](#3-Simple-Blind-SQL-Injection)
 - [Baby SQLite With Filter](#4-Baby-SQLite-With-Filter)
-
+- [Baby SQL Injection to RCE](#5-Baby-SQL-Injection-to-RCE)
+  
 * ### 1 Baby Crawler
 
 Writeup đầu tiên trong CTF_cookie-Arena này là challenge Baby Crawler với mình thì bài này không quá khó nhưng cũng làm tốn kha khá thời gian của mình và bắt đầu nào :>>
