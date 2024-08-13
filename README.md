@@ -119,7 +119,7 @@ thế nhưng do chương trình chỉ trả về welcome, $username hoặc Inval
 Ta thường thấy PostgreSQL cho phép sử dụng Stacked Query trong PHP để thực hiện liên tiếp các câu lệnh SQL khác nhau trên cùng một dòng .Nên mình thử payload sau **"test';SELECT+pg_sleep(10)--"** vào trường username để xem chương trình cho phép Stacked Query hay không và kết quả cho thấy ta có thể thực hiện stacked query
 ![image](https://github.com/user-attachments/assets/72283cf0-178c-4729-9b91-10ac159c174f)
 
-Để RCE được chúng ta cần phải biết COPY FROM PROGRAM function.Giải thích đơn giản là cho phép bạn chạy một lệnh hệ thống và nhập kết quả đầu ra trực tiếp vào một bảng hoặc tệp nó được tạo ra để tích hợp dữ liệu từ các chương trình bên ngoài vào database một cách dễ dàng và hiệu quả. Tiếp theo ta sẽ tạo payload để exploit phần payload này mình đựa trên CVE-2019-9193 để dựng lại 
+Để RCE được chúng ta cần phải biết COPY FROM PROGRAM function.Giải thích đơn giản là cho phép bạn chạy một lệnh hệ thống và nhập kết quả đầu ra trực tiếp vào một bảng hoặc tệp nó được tạo ra để tích hợp dữ liệu từ các chương trình bên ngoài vào database một cách dễ dàng và hiệu quả. Tiếp theo ta sẽ tạo payload để exploit phần payload này mình đựa trên CVE-2019-9193 để tạo
 1. tạo 1 table để giữ command output
 2. Chạy lệnh hệ thống thông qua chức năng COPY FROM PROGRAM và copy vào table vừa tạo
 3. Truy vấn table vừa tạo để lấy kết quả
