@@ -83,6 +83,7 @@ Sau khi xác định là boolean SQL Injection bây giờ mình sẽ tiến hàn
 
 ![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/f2f2bb6a-1e80-480a-ae6b-9b6badb50842)
   - bước năm thực hiện brute-force truy vấn mật khẩu của admin thôi nhưng trước hết thì cứ viết query trước đã : SELECT * FROM users WHERE uid = 'admin' AND (SELECT (SUBSTR((SELECT upw FROM users WHERE uid = 'admin'),1,1) = 'a') = 1 ) -- Giống như bước bốn mình sẽ sửa lại script đã viết trước đó (link-script sửa https://github.com/tthanhnguyen/CTF_cookie-Arena/blob/main/Burte-force_password.py) chạy script thì ra liền password nha login là có flag
+
 ![image](https://github.com/tthanhnguyen/CTF_cookie-Arena/assets/96458810/7418e55e-e36c-450b-ad22-6204e06085db)
 
 * ### 4 Baby SQLite With Filter
